@@ -977,7 +977,8 @@ module.exports = grammar({
 
     tag: _ => token(seq(/#[a-zA-Z_][a-zA-Z0-9_]*/, optional(seq('(', /\w*/, ')')))),
 
-    identifier: _ => /[_\p{XID_Start}][_\p{XID_Continue}]*/u,
+    identifier: _ =>
+      /[_\p{XID_Start}\u00B2\u00B3\u00B9\u2070-\u209F\u{1D53D}\u221E\u25A1\u25C7\u266F\u266D\u223C\u2243\u2245\u2039\u203A][_\p{XID_Continue}\u00B2\u00B3\u00B9\u2070-\u209F\u{1D53D}\u221E\u25A1\u25C7\u266F\u266D\u223C\u2243\u2245\u2039\u203A]*/u,
 
     field_identifier: $ => prec(-1, seq($.identifier, repeat1(seq('.', $.identifier)))),
 
